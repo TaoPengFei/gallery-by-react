@@ -3,15 +3,19 @@ html,body{
   width:100%;
   height:100%;
 }
-.content{
-  width:100%;
-  height:100%;
+#app{
+	width: 100%;
+	height: 100%;
+}
+img{
+	width:240px;
+	height:240px;
 }
 /* stage start */
 .stage{
   position:relative;
   width:100%;
-  height:680px;
+  height:100%;
 }
 /*stage end *／
 /** image start */
@@ -22,7 +26,55 @@ html,body{
 	overflow: hidden;
 
 	background-color: #ddd;
+
+	perspective:1800px;
+
+	@at-root{
+		.img-figure{
+			position: absolute;
+			width: 320px;
+			height:360px;
+			margin: 0;
+			padding: 40px;
+			box-sizing:boder-box;
+
+			background-color: #fff;
+
+			cursor: pointer;
+			transform-origin:0 50% 0;
+			transform-style:preserve-3d;
+			//perspective:1800px;
+			transition:transition .6s ease-in-out,left .6s ease-in-out,top .6s ease-in-out;
+
+			&.is-inverse{
+				transform:translate(320px) rotateY(180deg);
+			}
+		}
+		figcaption{
+			text-align: center;
+			.img-title{
+				margin: 20px 0 0 0;
+				color: #a7a0a2;
+				font-style: 16px;
+			}
+			.img-back{
+				position: absolute;
+				left:0;
+				top:0;
+				width:100%;
+				height:100%;
+				padding:30px;
+				box-sizing:boder-box;
+				text-align: center;
+				color: #666;
+				transform:rotateY(180deg) translateZ(1px);
+				background: #fff;
+				backface-visibility:hidden;
+			}
+		}
+	}
 }
+
 /* image end */
 
 /* controller start */
@@ -33,5 +85,33 @@ html,body{
 	z-index: 101;
 	width:100%;
 	text-align: center;
+	@at-root{
+		.controller-unit{
+			display: inline-block;
+			width: 30px;
+			height: 30px;
+			margin: 0 10px;
+			text-align: center;
+			cursor: pointer;
+			background-color: #aaa;
+			border-radius: 50%;
+			trasition:transform .6s ease-in-out;
+			&.is-center{
+				background: #888888;
+				transform:scale(1);
+				&::after{
+					color: #fff;
+					font-family: 'iconfont';
+					line-height: 30px;
+					content: '\e600';
+				}
+			
+			&.is-inverse{
+				background: #555;
+				transform:rotateY(180deg);
+			}
+		}
+		}
+	}
 }
 /* controller end */
