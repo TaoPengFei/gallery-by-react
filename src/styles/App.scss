@@ -1,3 +1,11 @@
+@font-face{
+	font-family: "icons-turn-arrow";
+	src: url('../fonts/icons/turn-arrow.eot') format("embedded-opentype"), /* IE9*/
+         url('../fonts/icons/turn-arrow.woff') format('woff'), /* chrome、firefox */
+         url('../fonts/icons/turn-arrow.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+         url('../fonts/icons/turn-arrow.svg') format('svg'); /* iOS 4.1- */
+
+}
 html,body{
   background-color:#222;
   width:100%;
@@ -44,7 +52,7 @@ img{
 			transform-origin:0 50% 0;
 			transform-style:preserve-3d;
 			//perspective:1800px;
-			transition:transition .6s ease-in-out,left .6s ease-in-out,top .6s ease-in-out;
+			transition:transform .6s ease-in-out,left .6s ease-in-out,top .6s ease-in-out;
 
 			&.is-inverse{
 				transform:translate(320px) rotateY(180deg);
@@ -90,28 +98,34 @@ img{
 			display: inline-block;
 			width: 30px;
 			height: 30px;
-			margin: 0 10px;
+			margin: 0 5px;
 			text-align: center;
 			cursor: pointer;
 			background-color: #aaa;
 			border-radius: 50%;
-			trasition:transform .6s ease-in-out;
+			transform:scale(.5);
+			vertical-align: middle;
+			transition:transform .6s ease-in-out,background-color .3s;
 			&.is-center{
-				background: #888888;
+				background: #888;
 				transform:scale(1);
+				&.is-inverse{
+					background-color: #555;
+					transform:rotateY(180deg);
+				}
+
 				&::after{
 					color: #fff;
-					font-family: 'iconfont';
+					font-family: "icons-turn-arrow";
 					line-height: 30px;
-					content: '\e600';
+					content: "\e600";
+					font-size:80%;
+					-webkit-font-smoothing:antialiased;
+					-moz-osx-font-smoothing:grayscale;
+
 				}
-			
-			&.is-inverse{
-				background: #555;
-				transform:rotateY(180deg);
 			}
-		}
-		}
+		 }
 	}
 }
 /* controller end */

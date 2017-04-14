@@ -28,6 +28,7 @@ function getRangeRandom(low,high){
 //获取0-30度之间的任意正负值
 
 function get30DegRandom(){
+  //console.log("*******"+ ((Math.random() >0.5 ? '':'-')+Math.ceil(Math.random() * 30)))
   return ((Math.random() >0.5 ? '':'-')+Math.ceil(Math.random() * 30));
 }
 
@@ -38,7 +39,6 @@ class ImgFigure extends React.Component{
   }
   handleClick(e){
     if(this.props.arrange.isCenter){
-      console.log("******");
       this.props.inverse();
     }else{
     this.props.center();
@@ -46,6 +46,7 @@ class ImgFigure extends React.Component{
     e.stopPropagation();
     e.preventDefault();
   }
+
   render(){
     let styleObj = {};
     //如果props属性中指定了这张图片的位置，则使用
@@ -82,6 +83,34 @@ class ImgFigure extends React.Component{
   }
 }
 
+//控制组件
+class ControllerUnit extends React.Component{
+  constructor(props){
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick(e){
+    if(this.props.arrange.isCenter){
+      this.props.inverse();
+    }else{
+    this.props.center();
+   }
+    e.stopPropagation();
+    e.preventDefault();
+  }
+render(){
+  let controllerUnitClassName = ' controller-unit ';
+  if(this.props.arrange.isCenter){
+      controllerUnitClassName += ' is-center ';
+      if(this.props.arrange.isInverse)
+      controllerUnitClassName += ' is-inverse';
+  }
+
+  return (
+    <span className = {controllerUnitClassName} onClick = {this.handleClick}></span>
+    )
+}
+}
 class AppComponent extends React.Component {
 
   //利用rearrange函数，居中对应index的图片 @param index 需要被居中的图片对应的图片信息数组的index值，return {Function}
@@ -173,11 +202,13 @@ class AppComponent extends React.Component {
   **/
   inverse(index){
     return function(){
+     // console.log("inverse**");
       var imgsArrangeArr = this.state.imgsArrangeArr;
       imgsArrangeArr[index].isInverse = !imgsArrangeArr[index].isInverse;
       this.setState({
         imgsArrangeArr:imgsArrangeArr
       })
+     // console.log(this.state.imgsArrangeArr);
     }.bind(this)
 
   }
@@ -185,7 +216,7 @@ class AppComponent extends React.Component {
   重新布局所有图片，param指定居中哪个图片
   **/
   rearrange(centerIndex){
-    var imgsArrangeArr = this.state.imgsArrangeArr,
+    let imgsArrangeArr = this.state.imgsArrangeArr,
         Constant = this.Constant,
         centerPos = Constant.centerPos,
         hPosRange = Constant.hPosRange,
@@ -212,7 +243,7 @@ class AppComponent extends React.Component {
         };
 
         //取出药布局上侧的图片的状态信息
-       topImgSpliceIndex = Math.ceil(Math.random() * (imgsArrangeArr.length - topImgNum));
+       topImgSpliceIndex = Math.floor(Math.random() * (imgsArrangeArr.length - topImgNum));
        imgsArrangeTopArr = imgsArrangeArr.splice(topImgSpliceIndex,topImgNum);
 
        //布局位于上侧的图片
@@ -259,7 +290,7 @@ class AppComponent extends React.Component {
 
   }
     render() {
-    let controllerUnits = [],
+    var controllerUnits = [],
     imgFigures = [];
 
     imageDatas.forEach(function(value,index){
@@ -274,7 +305,8 @@ class AppComponent extends React.Component {
           isCenter:false
         };
       }
-      imgFigures.push(<ImgFigure data={value} ref={'imgFigure'+index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)}/>);
+      imgFigures.push(<ImgFigure key={index} data={value} ref={'imgFigure'+index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)}/>);
+      controllerUnits.push(<ControllerUnit key={index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)}/>)
     }.bind(this));
 
     return (
