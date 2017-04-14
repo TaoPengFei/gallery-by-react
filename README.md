@@ -14,7 +14,7 @@ sass-loader 依赖node-sass 需要安装node-sass<br>
 8、需要先import ReactDOM from 'react-dom';才能使用ReactDOM.findDOMNode(this.refs.imgFigure0)<br>
 9、cfg下是新版的配置信息<br>
 
-项目安装运行
-npm install
-npm start
+<strong>项目安装运行</strong><br>
+npm install<br>
+npm start<br>
    
