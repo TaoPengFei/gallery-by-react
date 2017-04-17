@@ -21,4 +21,13 @@ npm start<br>
 图片路径错误：<br>
 
 将default.js 中的publicPath:'/assets/' 修改为 ’／gallery-by-react/assets/'<br>
-![image](http://https://github.com/zhangxintong/gallery-by-react/blob/master/src/images/path.png)
+![image](http://https://github.com/zhangxintong/gallery-by-react/blob/master/src/images/path.png)<br>
+
+修改完后 执行 npm run dist<br>
+先提交到master,命令如下：
+git add .<br>
+git commit -m "说明"<br>
+git push<br>
+提交到gh-pages分支<br>
+git add dist<br>
+git subtree push --prefix=dist origin gh-pages<br>
