@@ -21,7 +21,7 @@ npm start<br>
 图片路径错误：<br>
 
 将default.js 中的publicPath:'/assets/' 修改为 ’／gallery-by-react/assets/'<br>
-![image](http://https://github.com/zhangxintong/gallery-by-react/blob/master/src/images/path.png)<br>
+![image](https://github.com/zhangxintong/gallery-by-react/raw/master/src/images/path.png)<br>
 
 修改完后 执行 npm run dist<br>
 先提交到master,命令如下：
