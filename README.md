@@ -21,4 +21,4 @@ npm start<br>
 图片路径错误：<br>
 
 将default.js 中的publicPath:'/assets/' 修改为 ’／gallery-by-react/assets/'
-![image](http://https://github.com/zhangxintong/gallery-by-react/edit/master/src/images/屏幕快照 2017-04-17 下午2.29.35)
+![image](http://https://github.com/zhangxintong/gallery-by-react/blob/master/src/images/屏幕快照 2017-04-17 下午2.29.35.png)
