@@ -17,4 +17,8 @@ sass-loader 依赖node-sass 需要安装node-sass<br>
 <strong>项目安装运行</strong><br>
 npm install<br>
 npm start<br>
-   
+<strong>把项目发布到gh-pages分支</strong>
+图片路径错误：<br>
+
+将default.js 中的publicPath:'/assets/' 修改为 ’／gallery-by-react/assets/'<br>
+![image](http://https://github.com/zhangxintong/gallery-by-react/blob/master/src/images/path.png)
