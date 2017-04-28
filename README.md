@@ -51,6 +51,6 @@ git push<br>
 git add dist<br>
 git subtree push --prefix=dist origin gh-pages<br>
 
-<strong>图片无法显示</strong>
+<strong>图片无法显示</strong><br>
 解决办法：修改package.json<br>
 "copy":"copyfiles -f ./src/index.html ./src/favicon.ico ./dist && cp -a ./src/images ./dist/"<br>
